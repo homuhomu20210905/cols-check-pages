@@ -1,10 +1,8 @@
 import colors from 'vuetify/es5/util/colors'
 import penv from './env/production.js'
 import lenv from './env/local.js'
-const environment = process.env.NODE_ENV || 'local'
-console.log(environment)
 const env = () => {
-  if (process.env.NODE_ENV == 'production') {
+  if (process.env.NODE_ENV === 'production') {
     return penv
   } else {
     return lenv
