@@ -10,7 +10,9 @@ const env = () => {
 }
 
 export default {
-  base: env().BASE_URL,
+  router: {
+    base: env().BASE_URL,
+  },
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
