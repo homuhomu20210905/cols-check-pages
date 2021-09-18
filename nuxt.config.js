@@ -1,5 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
-import penv from './env/production.js'
+import penv from './env/product.js'
 import lenv from './env/local.js'
 const env = () => {
   if (process.env.NODE_ENV === 'production') {
@@ -53,6 +53,7 @@ export default {
     '@nuxtjs/stylelint-module',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    'nuxt-vite',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
