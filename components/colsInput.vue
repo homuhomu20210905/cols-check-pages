@@ -1,9 +1,11 @@
 <template>
   <v-col
-    :cols="cols"
-    :lg="lg"
-    :md="md"
-    :sm="sm"
+    :cols="data.cols"
+    :xl="data.xl"
+    :lg="data.lg"
+    :md="data.md"
+    :sm="data.sm"
+    :xs="data.xs"
     style="border: dotted 1px"
     name="div"
   >
@@ -13,17 +15,43 @@
       </v-col>
       <v-col cols="12">
         <span
-          ><v-text-field v-model.number="lg" label="lg" type="number" outlined
-        /></span>
-        <span
-          ><v-text-field v-model.number="md" label="md" type="number" outlined
-        /></span>
-        <span
-          ><v-text-field v-model.number="sm" label="sm" type="number" outlined
+          ><v-text-field
+            v-model.number="data.xl"
+            label="xl"
+            type="number"
+            outlined
         /></span>
         <span
           ><v-text-field
-            v-model.number="cols"
+            v-model.number="data.lg"
+            label="lg"
+            type="number"
+            outlined
+        /></span>
+        <span
+          ><v-text-field
+            v-model.number="data.md"
+            label="md"
+            type="number"
+            outlined
+        /></span>
+        <span
+          ><v-text-field
+            v-model.number="data.sm"
+            label="sm"
+            type="number"
+            outlined
+        /></span>
+        <span
+          ><v-text-field
+            v-model.number="data.xs"
+            label="xs"
+            type="number"
+            outlined
+        /></span>
+        <span
+          ><v-text-field
+            v-model.number="data.cols"
             label="cols"
             type="number"
             outlined
@@ -34,24 +62,28 @@
 </template>
 
 <script>
+import Size from '@/static/data'
 export default {
   props: {
     icols: { type: Number, default: 0 },
+    ixl: { type: Number, default: 0 },
     ilg: { type: Number, default: 0 },
     imd: { type: Number, default: 0 },
     ism: { type: Number, default: 0 },
+    ixs: { type: Number, default: 0 },
     index: { type: Number, default: 0 },
   },
   data() {
     const cols = this.icols
-    const md = this.imd
+    const xl = this.ixl
     const lg = this.ilg
+    const md = this.imd
     const sm = this.ism
+    const xs = this.ixs
+
+    const data = Object.assign(Size.columns(), { xl, lg, md, sm, xs, cols })
     return {
-      cols,
-      lg,
-      md,
-      sm,
+      data,
     }
   },
   computed: {
@@ -62,10 +94,8 @@ export default {
   },
   methods: {
     reflect($event) {
-      this.cols = $event.cols
-      this.md = $event.md
-      this.lg = $event.lg
-      this.sm = $event.sm
+      console.log('cols input reflect')
+      Size.setColumns(this.data, $event)
     },
   },
 }

@@ -1,10 +1,6 @@
 <template>
   <div class="text-center">
-    <v-dialog
-      :value="dialog"
-      width="500"
-      @input="$emit('input', $event.target.value)"
-    >
+    <v-dialog :value="dialog" width="500" click:outside="setEmit">
       <v-card>
         <v-card-title class="text-h5">一括入力 </v-card-title>
 
@@ -13,30 +9,50 @@
             <v-col cols="12">
               <span
                 ><v-text-field
-                  v-model.number="lg"
+                  v-model.number="data.xl"
+                  label="xl"
+                  type="number"
+                  :hint="'1ラインに' + 12 / data.xl + '項目表示されます'"
+                  outlined
+              /></span>
+              <span
+                ><v-text-field
+                  v-model.number="data.lg"
                   label="lg"
                   type="number"
+                  :hint="'1ラインに' + 12 / data.lg + '項目表示されます'"
                   outlined
               /></span>
               <span
                 ><v-text-field
-                  v-model.number="md"
+                  v-model.number="data.md"
                   label="md"
                   type="number"
+                  :hint="'1ラインに' + 12 / data.md + '項目表示されます'"
                   outlined
               /></span>
               <span
                 ><v-text-field
-                  v-model.number="sm"
+                  v-model.number="data.sm"
                   label="sm"
                   type="number"
+                  :hint="'1ラインに' + 12 / data.sm + '項目表示されます'"
                   outlined
               /></span>
               <span
                 ><v-text-field
-                  v-model.number="cols"
+                  v-model.number="data.xs"
+                  label="xs"
+                  type="number"
+                  :hint="'1ラインに' + 12 / data.xs + '項目表示されます'"
+                  outlined
+              /></span>
+              <span
+                ><v-text-field
+                  v-model.number="data.cols"
                   label="cols"
                   type="number"
+                  :hint="'1ラインに' + 12 / data.cols + '項目表示されます'"
                   outlined
               /></span>
             </v-col>
@@ -56,6 +72,7 @@
 </template>
 
 <script>
+import Size from '@/static/data'
 export default {
   props: {
     view: {
@@ -65,32 +82,19 @@ export default {
   },
   data() {
     console.log('data run..' + this.view)
-    const cols = 1
-    const md = 1
-    const lg = 1
-    const sm = 1
-
+    const data = Size.columns()
     return {
       dialog: this.view,
-      cols,
-      md,
-      lg,
-      sm,
+      data,
     }
   },
   methods: {
     setEmit() {
       this.dialog = !this.dialog
-      // this.$emit('closed', this.dialog)
     },
     reflect() {
       console.log('custom-dialog reflect...')
-      this.$emit('reflect', {
-        cols: this.cols,
-        md: this.md,
-        lg: this.lg,
-        sm: this.sm,
-      })
+      this.$emit('reflect', this.data)
       this.setEmit()
     },
   },

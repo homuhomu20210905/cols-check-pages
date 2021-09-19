@@ -27,6 +27,7 @@
           @click="changeDialog"
           >デフォルト値を設定</v-btn
         >
+
         <custom-Dialog ref="refCustomDialog" @reflect="reflect" />
       </v-col>
     </v-row>
@@ -36,9 +37,11 @@
         :key="index"
         ref="colsInput"
         :icols="item.cols"
+        :ixl="item.xl"
         :ilg="item.lg"
         :imd="item.md"
         :ism="item.sm"
+        :ixs="item.xs"
         :index="index"
       ></cols-input>
     </v-row>
@@ -48,7 +51,8 @@
 <script>
 import colsInput from '~/components/colsInput.vue'
 import customDialog from '~/components/customDialog.vue'
-const data = { cols: 1, lg: 1, md: 1, sm: 1 }
+import Size from '~/static/data'
+// const data = { cols: 1, lg: 1, md: 1, sm: 1, xs: 1 }
 export default {
   components: { colsInput, customDialog },
   data() {
@@ -57,7 +61,7 @@ export default {
     const count = 12
     const pullDownList = []
     for (let i = 0; i < count; i++) {
-      list.push(Object.assign({}, data))
+      list.push(Object.assign({}, Size.columns()))
       pullDownList.push(i + 1)
     }
     return {
@@ -72,7 +76,7 @@ export default {
     listReset() {
       this.list.length = 0
       for (let i = 0; i < this.count; i++) {
-        this.list.push(Object.assign({}, data))
+        this.list.push(Object.assign({}, Size.columns()))
       }
     },
     changeDialog() {
