@@ -15,10 +15,26 @@
         ></v-select>
       </v-col>
     </v-row>
+    <v-row>
+      <v-col cols="12">
+        <v-btn
+          elevation="2"
+          outlined
+          plain
+          raised
+          tile
+          x-large
+          @click="changeDialog"
+          >デフォルト値を設定</v-btn
+        >
+        <custom-Dialog ref="refCustomDialog" @reflect="reflect" />
+      </v-col>
+    </v-row>
     <v-row justify="center" align="center">
       <cols-input
         v-for="(item, index) in list"
         :key="index"
+        ref="colsInput"
         :icols="item.cols"
         :ilg="item.lg"
         :imd="item.md"
@@ -31,10 +47,12 @@
 
 <script>
 import colsInput from '~/components/colsInput.vue'
+import customDialog from '~/components/customDialog.vue'
 const data = { cols: 1, lg: 1, md: 1, sm: 1 }
 export default {
-  components: { colsInput },
+  components: { colsInput, customDialog },
   data() {
+    const viewDialog = false
     const list = []
     const count = 12
     const pullDownList = []
@@ -46,6 +64,7 @@ export default {
       list,
       count,
       pullDownList,
+      viewDialog,
     }
   },
   mounted() {},
@@ -55,6 +74,15 @@ export default {
       for (let i = 0; i < this.count; i++) {
         this.list.push(Object.assign({}, data))
       }
+    },
+    changeDialog() {
+      this.$refs.refCustomDialog.setEmit()
+    },
+    reflect($event) {
+      console.log('index.vue reflect...')
+      this.$refs.colsInput.forEach((item) => {
+        item.reflect($event)
+      })
     },
   },
 }

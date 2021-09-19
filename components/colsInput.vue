@@ -60,5 +60,13 @@ export default {
       return data.padStart(2, '0')
     },
   },
+  methods: {
+    reflect($event) {
+      this.cols = $event.cols
+      this.md = $event.md
+      this.lg = $event.lg
+      this.sm = $event.sm
+    },
+  },
 }
 </script>
