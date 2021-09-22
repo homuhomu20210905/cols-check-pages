@@ -70,6 +70,9 @@ typings/
 
 # Nuxt generate
 dist
+dist_vite
+dist_vite_false
+/diff*.txt
 
 # vuepress build output
 .vuepress/dist

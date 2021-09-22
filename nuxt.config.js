@@ -38,6 +38,8 @@ export default {
     ],
   },
 
+  telemetry: false,
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 
@@ -58,7 +60,7 @@ export default {
     'nuxt-vite',
   ],
   vite: {
-    build: false,
+    build: true,
   },
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
