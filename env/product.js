@@ -1,3 +1,3 @@
 module.exports = {
-  BASE_URL: './cols-check-pages/',
+  BASE_URL: '/cols-check-pages/',
 }
