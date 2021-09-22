@@ -7,7 +7,9 @@ const env = () => {
     return lenv
   }
 }
-
+console.log('vite:' + env().BASE_URL)
 export default {
   base: env().BASE_URL,
+  assetsDir: env().BASE_URL,
+  outDir: 'dist',
 }
