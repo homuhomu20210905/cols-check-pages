@@ -11,4 +11,6 @@ export default {
     a.xs = b.xs
     return a
   },
+  MAX_COUNT: 12,
+  NOMAL_COUNT: 3,
 }

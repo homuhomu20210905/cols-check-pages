@@ -2,7 +2,7 @@
   <div>
     <v-row justify="center" align="center">
       <v-cols cols="12">
-        <h1>colsの指定サンプルページ</h1>
+        <h1>現在のwidth：{{ heightName }}</h1>
       </v-cols>
     </v-row>
     <v-row>
@@ -58,10 +58,9 @@ export default {
   data() {
     const viewDialog = false
     const list = []
-    const count = 12
+    const count = Size.NOMAL_COUNT
     const pullDownList = []
-    for (let i = 0; i < count; i++) {
-      list.push(Object.assign({}, Size.columns()))
+    for (let i = 0; i < Size.MAX_COUNT; i++) {
       pullDownList.push(i + 1)
     }
     return {
@@ -69,6 +68,16 @@ export default {
       count,
       pullDownList,
       viewDialog,
+    }
+  },
+  computed: {
+    heightName() {
+      return this.$vuetify.breakpoint.name
+    },
+  },
+  created() {
+    for (let i = 0; i < Size.NOMAL_COUNT; i++) {
+      this.list.push(Object.assign({}, Size.columns()))
     }
   },
   mounted() {},
