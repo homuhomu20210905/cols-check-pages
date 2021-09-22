@@ -61,8 +61,8 @@ export default {
   ],
   vite: {
     build: true,
-    base: env().BASE_URL,
-    assetsDir: env().BASE_URL,
+    base: './',
+    assetsDir: './',
     outDir: 'dist',
   },
   // Modules: https://go.nuxtjs.dev/config-modules
