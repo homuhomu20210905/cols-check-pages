@@ -60,7 +60,7 @@ export default {
     'nuxt-vite',
   ],
   vite: {
-    build: true,
+    build: false,
     base: './',
     assetsDir: './',
     outDir: 'dist',
