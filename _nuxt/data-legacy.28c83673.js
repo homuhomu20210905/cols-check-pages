@@ -1,1 +1,0 @@
-System.register([],(function(s){"use strict";return{execute:function(){s("S",{columns:function(){return{cols:1,xl:1,lg:1,md:1,sm:1,xs:1}},setColumns:function(s,n){return s.cols=n.cols,s.xl=n.xl,s.lg=n.lg,s.md=n.md,s.sm=n.sm,s.xs=n.xs,s},MAX_COUNT:12,NOMAL_COUNT:3})}}}));
