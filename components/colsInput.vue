@@ -7,7 +7,6 @@
     :sm="data.sm"
     :xs="data.xs"
     style="border: dotted 1px"
-    name="div"
   >
     <v-row>
       <v-col cols="12">
